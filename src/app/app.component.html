@@ -1,0 +1,52 @@
+<kendo-gantt
+  [style.height.px]="1000"
+  [kendoGanttHierarchyBinding]="data"
+  kendoGanttExpandable
+  [initiallyExpanded]="true"
+  childrenField="subtasks"
+  [dependencies]="dependencies"
+  [taskClass]="taskClass"
+>
+  <kendo-gantt-column
+    field="title"
+    title="Task"
+    [width]="200"
+    [expandable]="true"
+  ></kendo-gantt-column>
+
+  <kendo-gantt-column
+    field="start"
+    title="Start"
+    format="M/dd/yyyy"
+    [width]="120"
+  ></kendo-gantt-column>
+
+  <kendo-gantt-column
+    field="end"
+    title="End"
+    format="M/dd/yyyy"
+    [width]="120"
+  ></kendo-gantt-column>
+
+  <kendo-gantt-timeline-week-view></kendo-gantt-timeline-week-view>
+  <kendo-gantt-timeline-month-view></kendo-gantt-timeline-month-view>
+
+  <ng-template
+    kendoGanttSummaryTaskTemplate
+    let-dataItem
+    let-elementWidth="elementWidth"
+  >
+    <div class="summary-task-content">
+      {{ dataItem.title }}
+    </div>
+  </ng-template>
+  <ng-template
+    kendoGanttTaskTemplate
+    let-dataItem
+    let-elementWidth="elementWidth"
+  >
+    <div class="task-content">
+      {{ dataItem.title }}
+    </div>
+  </ng-template>
+</kendo-gantt>

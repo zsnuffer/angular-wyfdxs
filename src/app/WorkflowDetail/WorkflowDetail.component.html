@@ -1,0 +1,153 @@
+<div class="spacer"></div>
+<div style="display:flex; flex-direction:column; flex:4; padding: 16px;">
+  <div
+    style=" border: 1px Solid black; border-radius: 8px; display:flex; flex-direction:column; height: 100%;background-color: #d8d8d8;"
+  >
+    <h1
+      style="display:flex; flex-direction: row; padding: 8px;background-image: linear-gradient(to bottom,#f9fafa,#dce0e4);
+    border-bottom: solid gray 1px; border-radius: 8px 8px 0 0;"
+    >
+      Candidate Filings Workflow: Rick Warren, City Council
+    </h1>
+    <div style="display:flex; padding: 6px;">
+      <label style="font-weight: bold; margin: 5px 8px; ">Start Date: </label>
+      <kendo-datepicker
+        style="width:120px"
+        [value]="StartDate"
+      ></kendo-datepicker>
+    </div>
+    <div style="display:flex; padding: 6px;">
+      <label style="font-weight: bold; margin: 5px 10px; ">End Date: </label>
+      <kendo-datepicker
+        style="width:120px"
+        [value]="EndDate"
+      ></kendo-datepicker>
+    </div>
+    <hr
+      style="border-top: 3px solid darkgrey; margin: 6px 2px 5px 1px;margin: 0px 8px;"
+    />
+    <div style="display:flex;height:100%; padding: 8px;">
+      <div style="display:flex; flex-direction:column; height: 100%;flex:1">
+        <kendo-grid
+          style="height:680px"
+          [kendoGridBinding]="gridData"
+          [selectable]="true"
+          kendoGridSelectBy="ID"
+          [selectedKeys]="[5]"
+        >
+          <kendo-grid-column title="Step" field="Step"></kendo-grid-column>
+          <kendo-grid-column
+            title="Status"
+            field="Status"
+            [width]="120"
+          ></kendo-grid-column>
+          <kendo-grid-column
+            title="Due Date"
+            field="DueDate"
+            format="M/d/yyyy"
+            [width]="120"
+          ></kendo-grid-column>
+          <kendo-grid-column
+            title="Completed Date"
+            field="CompletedDate"
+            format="M/d/yyyy"
+            [width]="150"
+          >
+          </kendo-grid-column>
+        </kendo-grid>
+      </div>
+      <div
+        style="display:flex; flex-direction:column; height: 100%;flex:1; width: "
+      >
+        <div>
+          <label style="font-weight: bold; margin: 5px 8px; ">Step: </label>
+          <span> Treasurer Form Filed</span>
+        </div>
+        <div>
+          <label style="font-weight: bold; margin: 5px 8px; "
+            >Assigned To:
+          </label>
+          <span> Cindy Clerk</span>
+        </div>
+        <div>
+          <label style="font-weight: bold; margin: 5px 8px; ">Status: </label>
+          <span> Open (4/15, Cindy Clerk)</span>
+        </div>
+        <div>
+          <label style="font-weight: bold; margin: 5px 8px; "
+            >Start Date:
+          </label>
+          <span> 4/1/2022</span>
+        </div>
+        <div>
+          <label style="font-weight: bold; margin: 5px 8px; ">End Date: </label>
+          <span> 4/10/2022</span>
+        </div>
+        <div>
+          <label style="font-weight: bold; margin: 5px 8px; ">Document: </label>
+          <span> Declaration of Treasurer Form</span>
+        </div>
+        <div style="display:flex; width:100%; ">
+          <label style="font-weight: bold; margin: 10px 8px; "
+            >Upload Document:
+          </label>
+          <kendo-upload
+            style="width:60%; border: 1px solid black"
+            #uplAttachments
+            id="uplAttachments"
+            [autoUpload]="false"
+            [saveUrl]="uploadSaveUrl"
+            [removeUrl]="uploadRemoveUrl"
+            [disabled]="true"
+          >
+          </kendo-upload>
+        </div>
+        <div style="display:flex; width:100%; margin: 8px 0; ">
+          <label style="font-weight: bold; margin: 10px 8px; "
+            >Reminder:
+          </label>
+          <button
+            kendoButton
+            style="background-color: #e4e7eb; border-radius: 3px;border: 1px Solid rgba(0, 0, 0, 0.08); margin-left: 55px; height: 35px;"
+          >
+            Email Reminder
+          </button>
+        </div>
+        <div style="display:flex; width:100%; margin: 8px 0; ">
+          <label style="font-weight: bold; margin: 10px 8px; "
+            >Check List:
+          </label>
+          <kendo-grid
+            style="height:350px; width: 85%;"
+            [kendoGridBinding]="checkListData"
+            [selectable]="true"
+            kendoGridSelectBy="ID"
+            [selectedKeys]="[5]"
+          >
+            <kendo-grid-column [width]="40">
+              <ng-template kendoGridCellTemplate let-dataItem>
+                <input
+                  type="checkbox"
+                  kendoCheckBox
+                  [checked]="dataItem.IsComplete"
+                />
+              </ng-template>
+            </kendo-grid-column>
+
+            <kendo-grid-column
+              title="Check List Item"
+              field="Item"
+            ></kendo-grid-column>
+            <kendo-grid-column
+              title="Completed"
+              field="Completed"
+              [width]="150"
+            >
+            </kendo-grid-column>
+          </kendo-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>

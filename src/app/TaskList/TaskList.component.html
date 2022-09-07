@@ -1,0 +1,63 @@
+<div class="spacer"></div>
+<div style="display:flex; flex-direction:column; flex:4; padding: 16px;">
+  <div
+    style=" border: 1px Solid black; border-radius: 8px; display:flex; flex-direction:column; height: 100%;background-color: #d8d8d8;"
+  >
+    <h1
+      style="display:flex; flex-direction: row; padding: 8px;background-image: linear-gradient(to bottom,#f9fafa,#dce0e4);
+    border-bottom: solid gray 1px; border-radius: 8px 8px 0 0;"
+    >
+      Staff Task List: Cindy Doe
+    </h1>
+    <div style="display:flex; padding: 6px;">
+      <label style="font-weight: bold; margin-top: 5px; margin-left: 8px; "
+        >Select a Workflow Step:
+      </label>
+      <kendo-dropdownlist
+        style="width:250px"
+        [data]="stepList"
+      ></kendo-dropdownlist>
+    </div>
+    <kendo-grid style="height:100%" [kendoGridBinding]="gridData">
+      <kendo-grid-column [width]="100">
+        <ng-template kendoGridCellTemplate>
+          <button
+            kendoButton
+            style="background-color: #e4e7eb; border-radius: 3px;border: 1px Solid rgba(0, 0, 0, 0.08);;"
+          >
+            view task
+          </button>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column
+        title="Checklist Item"
+        field="Item"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        title="Status"
+        field="Status"
+        [width]="120"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        title="Due Date"
+        field="DueDate"
+        format="M/d/yyyy"
+        [width]="150"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        title="Started Date"
+        field="StartedDate"
+        format="M/d/yyyy"
+        [width]="150"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        title="Completed Date"
+        field="CompletedDate"
+        format="M/d/yyyy"
+        [width]="150"
+      >
+      </kendo-grid-column>
+    </kendo-grid>
+  </div>
+</div>
+<div class="spacer"></div>
